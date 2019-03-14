@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190205131722) do
+ActiveRecord::Schema.define(version: 20190307165337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -728,7 +728,6 @@ ActiveRecord::Schema.define(version: 20190205131722) do
     t.string   "title",                  limit: 80
     t.text     "description"
     t.string   "question"
-    t.string   "external_url"
     t.integer  "author_id"
     t.datetime "hidden_at"
     t.integer  "flags_count",                       default: 0
@@ -1169,8 +1168,6 @@ ActiveRecord::Schema.define(version: 20190205131722) do
   create_table "proposals", force: :cascade do |t|
     t.string   "title",               limit: 80
     t.text     "description"
-    t.string   "question"
-    t.string   "external_url"
     t.integer  "author_id"
     t.datetime "hidden_at"
     t.integer  "flags_count",                    default: 0
@@ -1201,7 +1198,6 @@ ActiveRecord::Schema.define(version: 20190205131722) do
   add_index "proposals", ["geozone_id"], name: "index_proposals_on_geozone_id", using: :btree
   add_index "proposals", ["hidden_at"], name: "index_proposals_on_hidden_at", using: :btree
   add_index "proposals", ["hot_score"], name: "index_proposals_on_hot_score", using: :btree
-  add_index "proposals", ["question"], name: "index_proposals_on_question", using: :btree
   add_index "proposals", ["summary"], name: "index_proposals_on_summary", using: :btree
   add_index "proposals", ["title"], name: "index_proposals_on_title", using: :btree
   add_index "proposals", ["tsv"], name: "index_proposals_on_tsv", using: :gin
